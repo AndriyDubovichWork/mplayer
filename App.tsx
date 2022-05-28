@@ -1,20 +1,18 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, StatusBar, Dimensions } from 'react-native';
 
 export default function App() {
+  let deviceH = Dimensions.get('screen').height;
+  // the value returned does not include the bottom navigation bar, I am not sure why yours does.
+  let windowH = Dimensions.get('window').height;
+  let bottomNavBarH = deviceH - windowH;
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View
+      style={{
+        marginTop: StatusBar.currentHeight,
+        marginBottom: bottomNavBarH,
+      }}
+    >
+      <Text>hello fucking bitch</Text>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
